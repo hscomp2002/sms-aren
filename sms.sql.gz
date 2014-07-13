@@ -1,0 +1,131 @@
+-- phpMyAdmin SQL Dump
+-- version 3.5.8.2
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Jul 13, 2014 at 09:02 AM
+-- Server version: 5.1.71
+-- PHP Version: 5.3.3
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `sms`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `conf`
+--
+
+CREATE TABLE IF NOT EXISTS `conf` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `key` varchar(100) COLLATE utf8_persian_ci NOT NULL,
+  `value` mediumtext COLLATE utf8_persian_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci AUTO_INCREMENT=102 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `group`
+--
+
+CREATE TABLE IF NOT EXISTS `group` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `gr_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_persian_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=46 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `group_numbers`
+--
+
+CREATE TABLE IF NOT EXISTS `group_numbers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `numbers_id` int(11) NOT NULL,
+  `group_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci AUTO_INCREMENT=12389 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `in_sms`
+--
+
+CREATE TABLE IF NOT EXISTS `in_sms` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `mobile` int(11) NOT NULL,
+  `matn` mediumtext CHARACTER SET utf8 COLLATE utf8_persian_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `numbers`
+--
+
+CREATE TABLE IF NOT EXISTS `numbers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(200) COLLATE utf8_persian_ci NOT NULL,
+  `mobiles` varchar(200) COLLATE utf8_persian_ci NOT NULL,
+  `is_siah` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci AUTO_INCREMENT=11825 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `numbers_old`
+--
+
+CREATE TABLE IF NOT EXISTS `numbers_old` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `mobiles` varchar(12) CHARACTER SET utf8 COLLATE utf8_persian_ci NOT NULL,
+  `names` varchar(40) CHARACTER SET utf8 COLLATE utf8_persian_ci NOT NULL,
+  `group_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=12310 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sms_send`
+--
+
+CREATE TABLE IF NOT EXISTS `sms_send` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `mobile` varchar(50) CHARACTER SET utf8 COLLATE utf8_persian_ci NOT NULL,
+  `sms_text_id` int(11) NOT NULL,
+  `tarikh` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=4 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sms_text`
+--
+
+CREATE TABLE IF NOT EXISTS `sms_text` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `text` mediumtext CHARACTER SET utf8 COLLATE utf8_persian_ci NOT NULL,
+  `tarikh` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=32 ;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
